@@ -9,8 +9,8 @@ class CouponSchema extends Schema {
       table.increments();
       table.timestamps();
       table.string('code', 100).notNullable();
-      table.datatime('valid_from');
-      table.datatime('valid_until');
+      table.dateTime('valid_from');
+      table.dateTime('valid_until');
       table.integer('quantity').defaultTo(1);
       table.enu('can_use_for', ['product', 'client', 'product_client', 'all']);
       table.enu('type', ['free', 'percent', 'currency']).defaultTo('currency');

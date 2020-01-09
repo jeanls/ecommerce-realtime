@@ -12,7 +12,7 @@ class OrderSchema extends Schema {
       table.integer('user_id').unsigned();
       table.enu('status', ['pending', 'cancelled', 'shipped', 'paid', 'finished']);
 
-      table.foreing('user_id').references('id').inTale('users').onDelete('cascade');
+      table.foreign('user_id').references('id').inTable('users').onDelete('cascade');
     })
   }
 
