@@ -16,7 +16,7 @@ class User extends Model {
      * it to the database.
      */
     this.addHook('beforeSave', async (userInstance) => {
-      if (userInstance.dirty.password) {
+      if (userInstance.dirty.password) {//detecta se o campo foi alterado
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
@@ -41,6 +41,14 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  image(){
+    return this.belongsTo('App/Models/Image', 'id', 'image_id')
+  }
+
+  coupons(){
+    return this.belongsToMany('App/Models/Coupon').pivotTable('App/Models/CouponUser')
   }
 }
 
